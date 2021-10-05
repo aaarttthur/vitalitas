@@ -1,0 +1,6 @@
+ [{"nome":"Adauto Balbino de Melo Sobrinho","email":"abms1@aluno.ifal.edu.br",
+    "data-nascimento":"25/12/2003", "telefone":"(82) 40028922", "senha": "75adabedb7fa914ffc2637e4541a9978",
+    "sexo":"Masculino", "tipo-sanguineo":"O+", "cpf": 12345678910}, 
+    {"nome":"Ericlefyson Silva de Santana", "email": "ess23@aluno.ifal.edu.br",
+    "data-nascimento":"01/03/2003", "telefone":"(82) 996911693", "senha":"5a3d7e8bf86789bce1c4f9cfb5c9dc56",
+    "sexo":"Masculino", "tipo-sanguineo":"O+", "cpf":11029553338}]
