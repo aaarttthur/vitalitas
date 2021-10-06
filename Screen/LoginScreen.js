@@ -27,11 +27,11 @@ const LoginScreen = ({ navigation }) => {
   const handleSubmitPress = () => {
     setErrortext('');
     if (!userEmail) {
-      alert('Please fill Email');
+      alert('Por favor coloque seu email.');
       return;
     }
     if (!userPassword) {
-      alert('Please fill Password');
+      alert('Por favor coloque sua senha.');
       return;
     }
     setLoading(true);
@@ -141,6 +141,11 @@ const LoginScreen = ({ navigation }) => {
               style={styles.registerTextStyle}
               onPress={() => navigation.navigate('RegisterScreen')}>
               Novo aqui? Registre-se!
+            </Text>
+            <Text
+              style={styles.registerTextStyle}
+              onPress={() => navigation.navigate('RecoverPWScreen')}>
+              Esqueci minha senha
             </Text>
           </KeyboardAvoidingView>
         </View>

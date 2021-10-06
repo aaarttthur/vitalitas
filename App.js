@@ -11,12 +11,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 import SplashScreen from './Screen/SplashScreen';
 import LoginScreen from './Screen/LoginScreen';
 import RegisterScreen from './Screen/RegisterScreen';
+import RecoverPWScreen from './Screen/RecoverPWScreen';
 import DrawerNavigationRoutes from './Screen/DrawerNavigationRoutes';
+import PWContinue from './Screen/PWContinue';
 
 const Stack = createStackNavigator();
 
 const Auth = () => {
-  // Stack Navigator for Login and Sign up Screen
+  // Stack Navigator for Login, Sign up and Recover Screen
   return (
     <Stack.Navigator initialRouteName="LoginScreen">
       <Stack.Screen
@@ -29,6 +31,34 @@ const Auth = () => {
         component={RegisterScreen}
         options={{
           title: 'Registro', //Set Header Title
+          headerStyle: {
+            backgroundColor: '#FF5554', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+      <Stack.Screen
+        name="RecoverPWScreen"
+        component={RecoverPWScreen}
+        options={{
+          title: 'Recuperar Senha', //Set Header Title
+          headerStyle: {
+            backgroundColor: '#FF5554', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+      <Stack.Screen
+        name="PWContinue"
+        component={PWContinue}
+        options={{
+          title: 'Recuperar Senha', //Set Header Title
           headerStyle: {
             backgroundColor: '#FF5554', //Set Header color
           },
