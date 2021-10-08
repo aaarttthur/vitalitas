@@ -3,4 +3,11 @@
     "sexo":"Masculino", "tipo-sanguineo":"O+", "cpf": 12345678910, "doacoes":1}, 
     {"nome":"Ericlefyson Silva de Santana", "email": "ess23@aluno.ifal.edu.br",
     "data-nascimento":"01/03/2003", "telefone":"(82) 996911693", "senha":"fce8811a15cb8cbdf6b0ac64007e5c5b",
-    "sexo":"Masculino", "tipo-sanguineo":"O+", "cpf":11029553338, "doacoes":2}]
+    "sexo":"Masculino", "tipo-sanguineo":"O+", "cpf":11029553338, "doacoes":2},
+    {"nome":"Pedro Arthur Paulino Araújo","email":"papa1@aluno.ifal.edu.br",
+      "data-nascimento":"05/06/2003", "telefone":"(82) 998071892", "senha": "75adabedb7fa914ffc2637e4541a9978",
+      "sexo":"Masculino", "tipo-sanguineo":"AB+", "cpf": 662666420, "doacoes":1},
+     {"nome":"Lucas Venâncio Barros","email":"lvb1@aluno.ifal.edu.br",
+      "data-nascimento":"23/12/2002", "telefone":"(87) 981621098", "senha": "75adabedb7fa914ffc2637e4541a9978",
+      "sexo":"Masculino", "tipo-sanguineo":"B", "cpf": 23456782312, "doacoes":4}]
+    
