@@ -1,10 +1,12 @@
 // Import React and Component
+import DropDownPicker from 'react-native-dropdown-picker';
 import React, { useState, createRef } from 'react';
 import {
   StyleSheet,
   TextInput,
   View,
   Text,
+  Picker,
   Image,
   KeyboardAvoidingView,
   Keyboard,
@@ -23,6 +25,18 @@ const RegisterScreen = (props) => {
   const [loading, setLoading] = useState(false);
   const [errortext, setErrortext] = useState('');
   const [isRegistraionSuccess, setIsRegistraionSuccess] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([
+    {label: 'O+', value: 'O+'},
+    {label: 'O-', value: 'O-'},
+    {label: 'A+', value: 'A+'},
+    {label: 'A-', value: 'A-'},
+    {label: 'B+', value: 'B+'},
+    {label: 'B-', value: 'B-'},
+    {label: 'AB+', value: 'AB+'},
+    {label: 'AB-', value: 'AB-'}
+  ]);
 
   const nameInputRef = createRef();
   const emailInputRef = createRef();
@@ -121,13 +135,11 @@ const RegisterScreen = (props) => {
   return (
     <View style={{ flex: 1, backgroundColor: '#FF5554' }}>
       <Loader loading={loading} />
-      <ScrollView
-        keyboardShouldPersistTaps="handled"
-        contentContainerStyle={{
+    <View         contentContainerStyle={{
           justifyContent: 'center',
           alignContent: 'center',
         }}>
-        <View style={{ alignItems: 'center' }}>
+      <View style={{ alignItems: 'center' }}>
           <Image
             source={require('../Image/aboutreact.png')}
             style={{
@@ -138,6 +150,27 @@ const RegisterScreen = (props) => {
             }}
           />
         </View>
+        <View style={styles.SectionStyle}>
+        <DropDownPicker
+      style = {styles.dropdown}
+      open={open}
+      value={value}
+      items={items}
+      setOpen={setOpen}
+      setValue={setValue}
+      setItems={setItems}
+      placeholder = 'Selecione um Tipo Sanguíneo'
+    />
+        </View>
+
+    </View>
+      <ScrollView
+        keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{
+          justifyContent: 'center',
+          alignContent: 'center',
+        }}>
+
         <KeyboardAvoidingView enabled>
           <View style={styles.SectionStyle}>
             <TextInput
@@ -218,6 +251,7 @@ const RegisterScreen = (props) => {
               blurOnSubmit={false}
             />
           </View>
+
           {errortext != '' ? (
             <Text style={styles.errorTextStyle}> {errortext} </Text>
           ) : null}
@@ -269,6 +303,16 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 30,
     borderColor: '#dadae8',
+  }, 
+  dropdown: {
+    flex: 1,
+    color: 'white',
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderWidth: 1,
+    borderRadius: 30,
+    borderColor: '#dadae8',
+    backgroundColor: '#FF5554'
   },
   errorTextStyle: {
     color: 'red',

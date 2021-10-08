@@ -14,7 +14,7 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
-import AsyncStorage from '@react-native-community/async-storage';
+import { AsyncStorage } from 'react-native';
 
 import Loader from './Components/Loader';
 
@@ -26,28 +26,40 @@ const LoginScreen = ({ navigation }) => {
 
   const passwordInputRef = createRef();
 
-  const handleSubmitPress = () => {
-    setErrortext('');
-    // if (!userEmail) {
-    //   alert('Por favor coloque seu email.');
-    //   return;
-    // }
-    // if (!userPassword) {
-    //   alert('Por favor coloque sua senha.');
-    //   return;
-    // }
-    setLoading(true);
-    let encodedPassword = md5(userPassword);
-    for (var user in userData) {
-      if (userData[user]['email'] == userEmail && userData[user]['senha'] == encodedPassword ) {
-        let loggedUser = userData[user];
-        setLoading(false);
-        navigation.navigate('DrawerNavigationRoutes', {user:loggedUser});
-      } else {
-        setLoading(false);
-        setErrortext('Please check your email id or password');
+  async function handleSubmitPress () {
+    try {
+      setErrortext('');
+      if (!userEmail) {
+        alert('Por favor coloque seu email.');
+        return;
       }
+      if (!userPassword) {
+        alert('Por favor coloque sua senha.');
+        return;
+      }
+      setLoading(true);
+      let encodedPassword = md5(userPassword);
+      for (var user in userData) {
+        if (userData[user]['email'] == userEmail && userData[user]['senha'] == encodedPassword ) {
+          let loggedUser = userData[user];
+          await AsyncStorage.setItem('username', loggedUser['nome']);
+          await AsyncStorage.setItem('userdonations', loggedUser['doacoes'].toString());
+          setUserEmail('');
+          setUserPassword('');
+          setLoading(false);
+          navigation.navigate('DrawerNavigationRoutes', {user: loggedUser});
+        } else {
+          if (userData.length == Number(user) + 1) {
+            setLoading(false);
+            setErrortext('Please check your email id or password');
+          }
+
+        }
+      }
+    } catch (error) {
+      alert(error);
     }
+
   };
 
   return (
@@ -75,6 +87,7 @@ const LoginScreen = ({ navigation }) => {
             </View>
             <View style={styles.SectionStyle}>
               <TextInput
+                value = {userEmail}
                 style={styles.inputStyle}
                 onChangeText={(UserEmail) => setUserEmail(UserEmail)}
                 placeholder="Insira o email" //dummy@abc.com
@@ -91,6 +104,7 @@ const LoginScreen = ({ navigation }) => {
             </View>
             <View style={styles.SectionStyle}>
               <TextInput
+                value = {userPassword}
                 style={styles.inputStyle}
                 onChangeText={(UserPassword) => setUserPassword(UserPassword)}
                 placeholder="Insira a senha" //12345
@@ -182,7 +196,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   errorTextStyle: {
-    color: 'red',
+    color: 'white',
     textAlign: 'center',
     fontSize: 14,
   },

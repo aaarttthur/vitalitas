@@ -11,7 +11,7 @@ import {
   DrawerItem,
 } from '@react-navigation/drawer';
 
-import AsyncStorage from '@react-native-community/async-storage';
+import { AsyncStorage } from 'react-native';
 
 const CustomSidebarMenu = (props) => {
   return (
@@ -19,10 +19,10 @@ const CustomSidebarMenu = (props) => {
       <View style={stylesSidebar.profileHeader}>
         <View style={stylesSidebar.profileHeaderPicCircle}>
           <Text style={{fontSize: 25, color: '#FF5554'}}>
-            {'About React'.charAt(0)}
+            {'Vitalie'.charAt(0)}
           </Text>
         </View>
-        <Text style={stylesSidebar.profileHeaderText}>AboutReact</Text>
+        <Text style={stylesSidebar.profileHeaderText}>Vitalie</Text>
       </View>
       <View style={stylesSidebar.profileHeaderLine} />
 
@@ -34,19 +34,19 @@ const CustomSidebarMenu = (props) => {
             props.navigation.toggleDrawer();
             Alert.alert(
               'Logout',
-              'Are you sure? You want to logout?',
+              'Você deseja deslogar?',
               [
                 {
-                  text: 'Cancel',
+                  text: 'Não',
                   onPress: () => {
                     return null;
                   },
                 },
                 {
-                  text: 'Confirm',
+                  text: 'Sim',
                   onPress: () => {
                     AsyncStorage.clear();
-                    props.navigation.replace('Auth');
+                    props.navigation.navigate('SplashScreen');
                   },
                 },
               ],
