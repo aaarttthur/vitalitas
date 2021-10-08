@@ -20,6 +20,7 @@ const RegisterScreen = (props) => {
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userAge, setUserAge] = useState('');
+  const [userCPF, setUserCPF] = useState('');
   const [userAddress, setUserAddress] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -42,6 +43,7 @@ const RegisterScreen = (props) => {
   const emailInputRef = createRef();
   const ageInputRef = createRef();
   const addressInputRef = createRef();
+  const CPFInputRef = createRef();
   const passwordInputRef = createRef();
 
   const handleSubmitButton = () => {
@@ -58,6 +60,10 @@ const RegisterScreen = (props) => {
       alert('Insira sua idade, por favor.');
       return;
     }
+    if (!userCPF) {
+      alert('Insira seu CPF, por favor.');
+      return;
+    }
     if (!userAddress) {
       alert('Insira seu endereço, por favor.');
       return;
@@ -72,6 +78,7 @@ const RegisterScreen = (props) => {
       user_name: userName,
       user_email: userEmail,
       user_age: userAge,
+      user_CPF: usercpf, 
       user_address: userAddress,
       user_password: userPassword,
     };
@@ -182,7 +189,7 @@ const RegisterScreen = (props) => {
               autoCapitalize="sentences"
               returnKeyType="next"
               onSubmitEditing={() =>
-                emailInputRef.current && emailInputRef.current.focus()
+                nameInputRef.current && nameInputRef.current.focus()
               }
               blurOnSubmit={false}
             />
@@ -198,7 +205,7 @@ const RegisterScreen = (props) => {
               ref={emailInputRef}
               returnKeyType="next"
               onSubmitEditing={() =>
-                passwordInputRef.current && passwordInputRef.current.focus()
+                emailInputRef.current && emailInputRef.current.focus()
               }
               blurOnSubmit={false}
             />
@@ -216,7 +223,7 @@ const RegisterScreen = (props) => {
               returnKeyType="next"
               secureTextEntry={true}
               onSubmitEditing={() =>
-                ageInputRef.current && ageInputRef.current.focus()
+                passwordInputRef.current && passwordInputRef.current.focus()
               }
               blurOnSubmit={false}
             />
@@ -232,7 +239,7 @@ const RegisterScreen = (props) => {
               ref={ageInputRef}
               returnKeyType="next"
               onSubmitEditing={() =>
-                addressInputRef.current && addressInputRef.current.focus()
+                ageInputRef.current && ageInputRef.current.focus()
               }
               blurOnSubmit={false}
             />
@@ -247,7 +254,26 @@ const RegisterScreen = (props) => {
               autoCapitalize="sentences"
               ref={addressInputRef}
               returnKeyType="next"
-              onSubmitEditing={Keyboard.dismiss}
+              onSubmitEditing={() =>
+                addressInputRef.current && addressInputRef.current.focus()
+              }
+              blurOnSubmit={false}
+            />
+          </View>
+
+          <View style={styles.SectionStyle}>
+            <TextInput
+              style={styles.inputStyle}
+              onChangeText={(UserCPF) => setUserCPF(UserCPF)}
+              underlineColorAndroid="#f000"
+              placeholder="Insira seu CPF"
+              placeholderTextColor="#D4F1F4"
+              autoCapitalize="sentences"
+              ref={CPFInputRef}
+              returnKeyType="next"
+              onSubmitEditing={() =>
+                CPFInputRef.current && CPFInputRef.current.focus()
+              }
               blurOnSubmit={false}
             />
           </View>

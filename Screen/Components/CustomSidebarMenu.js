@@ -19,10 +19,10 @@ const CustomSidebarMenu = (props) => {
       <View style={stylesSidebar.profileHeader}>
         <View style={stylesSidebar.profileHeaderPicCircle}>
           <Text style={{fontSize: 25, color: '#FF5554'}}>
-            {'Vitalie'.charAt(0)}
+            {'Vitalitas'.charAt(0)}
           </Text>
         </View>
-        <Text style={stylesSidebar.profileHeaderText}>Vitalie</Text>
+        <Text style={stylesSidebar.profileHeaderText}>Vitalitas</Text>
       </View>
       <View style={stylesSidebar.profileHeaderLine} />
 

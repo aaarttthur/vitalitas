@@ -51,7 +51,7 @@ const LoginScreen = ({ navigation }) => {
         } else {
           if (userData.length == Number(user) + 1) {
             setLoading(false);
-            setErrortext('Please check your email id or password');
+            setErrortext('Por favor cheque seu e-mail e sua senha');
           }
 
         }
@@ -136,6 +136,11 @@ const LoginScreen = ({ navigation }) => {
               style={styles.registerTextStyle}
               onPress={() => navigation.navigate('RecoverPWScreen')}>
               Esqueci minha senha
+            </Text>
+            <Text
+              style={styles.registerTextStyle}
+              onPress={() => navigation.navigate('RecoverPWScreen')}>
+              Entrar sem login 
             </Text>
           </KeyboardAvoidingView>
         </View>
